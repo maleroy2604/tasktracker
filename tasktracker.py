@@ -4,11 +4,9 @@ from datetime import datetime
 
 class TaskTracker:
 
-    TODAY_DATE = datetime.now().strftime("%Y-%m-%d")
-
-    def __init__(self):
-        self._tasks = []
-        self._file_name = f"tasks_{self.TODAY_DATE}.txt"
+    def __init__(self, tasks, file_name):
+        self._tasks = tasks
+        self._file_name = file_name
 
     def start_daily_tasks_process(self):
         if os.path.exists(self._file_name):
