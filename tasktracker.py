@@ -24,14 +24,16 @@ class TaskTracker:
 
     def write_into_daily_file(self):
         if os.path.exists(self._file_name):
-            with open(self._file_name, 'a') as file:
-                for task in self._tasks:
-                    file.write(task + '\n')
+            self.write_in_file_with_option('a')
         else:
-            with open(self._file_name, 'w') as file:
-                for task in self._tasks:
-                    file.write(task + '\n')
+            self.write_in_file_with_option('w')
 
     def read_from_daily_file(self):
         with open(self._file_name, 'r') as file:
             return file.read()
+
+    def write_in_file_with_option(self, option):
+        with open(self._file_name, option) as file:
+            for task in self._tasks:
+                file.write(task + '\n')
+
